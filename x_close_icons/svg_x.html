@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SVG X</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style type="text/css">
+body{
+	margin: 0px;
+	font-size:20px;
+	font-family:sans-serif;
+	color:#333;
+
+	text-align: center;
+	padding-top: 50px;
+}
+</style>
+
+</head>
+<body>
+
+
+<!-- basic x -->
+<svg width="30" viewBox="0 0 10 10">
+	<style type="text/css"><![CDATA[ line{ stroke:#333; stroke-width:1; stroke-linecap:round; } ]]></style>
+	<line x1="0.5" y1="0.5" x2="9.5" y2="9.5" />
+	<line x1="0.5" y1="9.5" x2="9.5" y2="0.5" />
+</svg>
+
+
+<br><br><br><br>
+
+
+<!-- x in circle -->
+<svg width="40" viewBox="0 0 10 10">
+	<style type="text/css"><![CDATA[ line,circle{ stroke:#333; stroke-width:1; stroke-linecap:round; } ]]></style>
+	<circle cx="5" cy="5" r="4.5" style="fill:#dff;" />
+	<line x1="3.5" y1="3.5" x2="6.5" y2="6.5" />
+	<line x1="3.5" y1="6.5" x2="6.5" y2="3.5" />
+</svg>
+
+
+
+<script>
+var yb = { id : function(str){return document.getElementById(str)} };
+</script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+
+<style type="text/css">
+body{
+	margin: 0px;
+	font-size:20px;
+	font-family:sans-serif;
+	color:#fff;
+	background: #386992;
+	text-align: center;
+}
+
+</style>
+
+</head>
+<body>
+
+
+<svg width="450" viewBox="0 0 100 145" style="max-width:95%; border:1px solid #333;">
+	
+	<style type="text/css">
+		<![CDATA[
+			.dashed-line{stroke:#fff; stroke-width:1; stroke-linecap:round; stroke-dasharray:3;}
+			#speaker rect, #speaker polygon{ stroke:none; fill:#fff; }
+			#speaker path{ stroke:#fff; stroke-width:0.5; stroke-linecap:round; fill:none; }
+		]]>
+	</style>
+
+	<defs>
+		<!-- regular circle and dashed lines -->
+		<circle id="demo_regular_circle" cx="0" cy="0" r="15" style="stroke:#fff; stroke-width:0.2; fill:transparent;" />
+		<line id="demo_dashed_line" x1="0" y1="0" x2="17" y2="11" class="dashed-line" />
+
+		<!-- large circle -->
+		<circle id="demo_big_circle" cx="0" cy="0" r="20" style="stroke:#fff; stroke-width:6; fill:#333;" />
+
+		<!-- blue bike circular mask -->
+		<mask id="blue_bike_mask">
+			<circle cx="75" cy="110" r="20" style="stroke:none; fill:#fff;" />
+		</mask>
+
+
+		<!-- speaker -->
+		<g id="speaker">
+			<rect x="0" y="2" width="1" height="3" />
+			<polygon points="1.5,2 4,0 4,7 1.5,5" />
+
+			<path d="M4.5 3 q0.5 0.5 0 1" />
+			<path d="M5.5 2 q1 1.5 0 3" />
+			<path d="M6.5 1 q1.5 2.5 0 5" />
+		</g>
+
+	</defs>
+
+
+	<!-- circle with speaker prototype -->
+	<defs>
+		<g id="circle_with_speaker">
+			<circle cx="-10.5" cy="-10.5" r="3" style="stroke:none; fill:#fff;" />
+			<use xlink:href="#demo_regular_circle" x="0" y="0" />
+			<use xlink:href="#speaker" x="-3.5" y="8" transform="scale(0.7)" />
+		</g>
+	</defs>
+
+	<!-- demo circles -->
+	<use id="step1" xlink:href="#circle_with_speaker" x="25" y="25" />
+	<use id="step2" xlink:href="#circle_with_speaker" x="75" y="55" />
+	<use id="step3" xlink:href="#circle_with_speaker" x="25" y="85" />
+	<use id="step4" xlink:href="#circle_with_speaker" x="75" y="115" />
+
+	<!-- dashed lines -->
+	<use xlink:href="#demo_dashed_line" x="41" y="35" />
+	<use xlink:href="#demo_dashed_line" x="41" y="65" transform="scale(-1,1) translate(-100,0)" />
+	<use xlink:href="#demo_dashed_line" x="41" y="95" />
+
+	<!-- blue bike -->
+	<defs>
+		<g id="blue_bike_group">
+			<use xlink:href="#demo_big_circle" x="75" y="110" />
+			<image xlink:href="https://metrouk2.files.wordpress.com/2014/07/ad_141488088.jpg" x="40" y="65" width="90" height="90" mask="url(#blue_bike_mask)" />
+		</g>
+	</defs>
+	<use id="blue_bike" xlink:href="#blue_bike_group" x="0" y="-55" />
+
+
+	<text x="25" y="23" fill="#fff" text-anchor="middle" style="font-size:4px;">
+		SIGHTS &amp;
+		<tspan x="25" dy="5">SOUNDS</tspan>
+	</text>
+
+	
+</svg>
+
+
+
+
+
+<audio id="audio2">
+	<source type="audio/mp3" src="http://www.rosettastone.com/lp/opdemo2/audio/2-una-bicicletta-azul.mp3">
+	<source type="audio/wav" src="http://www.rosettastone.com/lp/opdemo2/audio/2-una-bicicletta-azul.wav">
+</audio>
+
+<audio id="airhorn">
+	<source type="audio/mp3" src="http://soundboard.panictank.net/AIRHORN.mp3">
+</audio>
+
+
+
+<script src="/Users/yberhanu/Documents/Useful code/jquery/jquery-min-1-11-1.js"></script>
+<script>
+var yb = { id : function(str){return document.getElementById(str)} };
+
+yb.id('step1').onclick = function(){alert('step 1')};
+yb.id('step3').onclick = function(){alert('step 3')};
+yb.id('step4').onclick = function(){alert('step 4')};
+
+
+
+yb.id('blue_bike').style.display = 'none';
+
+
+yb.id('step2').onclick = function(){
+	$('#blue_bike').fadeIn('slow');
+	yb.id('audio2').play();
+
+	setTimeout(function(){yb.id('airhorn').play();},1400);
+	setTimeout(function(){yb.id('airhorn').pause();},1500);
+	setTimeout(function(){yb.id('airhorn').play();},1600);
+	setTimeout(function(){yb.id('airhorn').pause();},1700);
+	setTimeout(function(){yb.id('airhorn').play();},1800);
+
+	setTimeout(function(){$('#blue_bike').fadeOut('slow');},1500);
+};
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style type="text/css">
+body{
+	margin: 0px;
+	font-size:20px;
+	font-family:sans-serif;
+	color:#333;
+	text-align: center;
+}
+
+</style>
+
+</head>
+<body>
+
+<svg width="800" viewBox="0 0 200 100" style="border:3px solid #333; max-width:95%; margin-top:30px;">
+	<g transform="translate(0,100) scale(1,-1)">
+		<polyline id="linegraph" points="" style="stroke:#333; stroke-width:1; fill:none;" />
+	</g>
+</svg>
+
+
+<script>
+var yb = { id : function(str){return document.getElementById(str)} };
+
+var graph = yb.id('linegraph');
+
+function addPoint(x,y){
+	graph.setAttribute('points', graph.getAttribute('points') + ' '+x+','+y);
+}
+
+var x = 0;
+var y = 0;
+var graphinterval = setInterval(function(){
+	//y = Math.floor(Math.random()*100);
+	y = 30*Math.sin(x/7)+50;
+	addPoint(x,y);
+	x++;
+	if(x>=201){clearInterval(graphinterval);}
+},10);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style type="text/css">
+body{
+	margin: 0px;
+	font-size:20px;
+	font-family:sans-serif;
+	color:#333;
+	text-align: center;
+
+	background: #edbe39;
+}
+
+</style>
+
+</head>
+<body>
+
+<svg width="100%" viewBox="0 0 200 100" style="border:0px solid #333; margin-top:30px;">
+	<g transform="translate(0,100) scale(1,-1)">
+		<polyline id="linegraph" points="" style="stroke:#fff; stroke-width:1; fill:none;"></polyline>
+		<polyline id="linegraph2" points="" style="stroke:#fff; stroke-width:1; fill:none;"></polyline>
+		<line x1="0" y1="50" x2="200" y2="50" style="stroke:#fff; stroke-width:1; stroke-dasharray:1 2;"></line>
+	</g>
+</svg>
+
+
+<script>
+var yb = { id : function(str){return document.getElementById(str)} };
+
+var graph = yb.id('linegraph');
+var graph2 = yb.id('linegraph2');
+
+function addPoint(the_graph,x,y){
+	the_graph.setAttribute('points', the_graph.getAttribute('points') + ' '+x+','+y);
+}
+
+var x = 0;
+var y = 0;
+var y2 = 0;
+
+for(;x<201;x++){
+	y = 35*Math.sin(x/4)+50;
+	addPoint(graph,x,y);
+
+	y2 = 15*Math.sin(x/6)+50;
+	addPoint(graph2,x,y2);
+}
+
+
+
+
+var rotation = 0;
+var rotation2 = 0;
+var move1 = 0;
+var move2 = 0;
+
+var transform_origin = '100px 50px';
+graph.style.transformOrigin = transform_origin;
+graph.style.webkitTransformOrigin = transform_origin;
+graph2.style.transformOrigin = transform_origin;
+graph2.style.webkitTransformOrigin = transform_origin;
+
+
+var graphinterval = setInterval(function(){
+	rotation = (rotation+12)%360;
+	move1 = (move1+0.2)%12;
+	graph.style.transform = 'scaleX(2) translateX('+move1+'px) rotateX('+rotation+'deg)';
+	graph.style.webkitTransform = 'scaleX(2) translateX('+move1+'px) rotateX('+rotation+'deg)';
+},10);
+
+var graphinterval2 = setInterval(function(){
+	rotation2 = (rotation2+10)%360;
+	move2 = (move2+1)%30;
+	graph2.style.transform = 'scaleX(2) translateX('+move2+'px) rotateX('+rotation+'deg)';
+	graph2.style.webkitTransform = 'scaleX(2) translateX('+move2+'px) rotateX('+rotation+'deg)';
+},10);
+
+
+</script>
+</body>
+</html>

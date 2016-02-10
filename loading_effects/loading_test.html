@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+
+<style type="text/css">
+body{
+	margin: 0px;
+	font-size:20px;
+	font-family:sans-serif;
+	color:#333;
+}
+
+.save{
+	border: 0px;
+	border-radius: 3px;
+	background: #397;
+	color: #fff;
+	padding: 10px 20px;
+	font-size: 20px;
+	cursor: pointer;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.save:hover{
+	background: #4a8;
+}
+
+.lightball{
+	display: none;
+	position: absolute;
+	left: -30px;
+	top: 35%;
+	background: rgba(255,255,255,0.95);
+	box-shadow: 1px 1px 3px 5px rgba(233,233,233,0.7);
+	height: 8px;
+	width: 8px;
+	border-radius: 50%;
+
+	animation: movelight 0.3s infinite;
+}
+
+@keyframes movelight{
+	from{transform:translateX(0px);}
+	to{transform:translateX(150px);}
+}
+
+
+
+</style>
+
+</head>
+<body>
+
+
+
+<div class="save">
+	<span>Save</span>
+	<div class="lightball"></div>
+</div>
+
+
+<script>
+var yb = { id : function(str){return document.getElementById(str)} };
+
+document.querySelector('.save').onclick = function(){
+	// this.querySelector('span').innerHTML = 'Saving';
+	this.querySelector('span').style.color = '#397';
+	this.style.backgroundColor = '#4a8';
+	document.querySelector('.lightball').style.display = 'block';
+};
+</script>
+</body>
+</html>
